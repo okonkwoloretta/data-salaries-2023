@@ -32,7 +32,7 @@ First lets have a preview of our dataset
 
 ![preview of the dataset](https://user-images.githubusercontent.com/116097143/236707871-41fc27b3-08c0-4912-9173-b9669fb56914.png)
 
-- Checked for missing values, Our data was from missing values
+1 Checked for missing values, Our data was from missing values
 
 ![preprocessing](https://user-images.githubusercontent.com/116097143/236708524-5df8b618-f10a-4b23-8f04-d670b161d136.png)
 ![preprocessing 2](https://user-images.githubusercontent.com/116097143/236708532-cf542ea0-7227-4fc1-a8d3-1d2ee707855f.png)
@@ -40,7 +40,7 @@ First lets have a preview of our dataset
 
 
 
-- Checking for duplicates 
+2 Checking for duplicates with the following code
 
 ![checking for dup](https://user-images.githubusercontent.com/116097143/236708645-94cdd523-c1cc-4e16-af62-73c703f2dc0f.png)
 
@@ -62,7 +62,48 @@ If there is a legitimate reason to remove certain data from a dataset, it should
 
 Overall, the responsible handling of data is critical for maintaining trust and credibility in the field of data science.
 
-I have remove to duplicate values, as this is a practice work using 
+I have to remove duplicate values, as this is a practice work using this code below
 
 ![removing dup column](https://user-images.githubusercontent.com/116097143/236708585-d49a2bdb-b276-470a-a0ce-f6cb09a62604.png)
 
+3 Checking my data type
+
+![checking datatype](https://user-images.githubusercontent.com/116097143/236708953-70b6584d-5776-49e6-8709-6c3542ac64d0.png)
+
+Wow, I just discovered all the columns were converted to **varchar** this happens when the dataset was not imported properly , lets fixed that up using
+
+![updated data type](https://user-images.githubusercontent.com/116097143/236709124-d0d444de-c99f-4aa3-acf2-e849e633ef1a.png)
+
+lets us preview our updated data type
+
+![updated data type](https://user-images.githubusercontent.com/116097143/236709066-946a8cf0-a79a-442e-a2bc-cd00ada76a04.png)
+
+## Exploratory data analysis (EDA)
+lets explore our data by answering the following questions
+1. 
+![avg salary](https://user-images.githubusercontent.com/116097143/236709315-b1d52f91-d9f8-4668-a3ae-e839ad1fd8c6.png)
+
+2.
+![median salary](https://user-images.githubusercontent.com/116097143/236709446-e2d3f775-6cc4-4d34-9bed-225dd6b25b06.png)
+
+3.
+![max and min salary](https://user-images.githubusercontent.com/116097143/236709443-41fa95a2-e279-4068-a08c-b68c8226aa22.png)
+
+4.
+![distribution of salaries ](https://user-images.githubusercontent.com/116097143/236709450-f6499148-8042-4245-a43f-d4390cf7eaf4.png)
+
+5.
+![region highest salary](https://user-images.githubusercontent.com/116097143/236709768-ae2fea95-6bdc-4f04-9bd2-2e331b23c6dc.png)
+
+
+
+![region with data science job](https://user-images.githubusercontent.com/116097143/236709447-0d00f451-c8b4-4196-b7f0-65dce3a1473e.png)
+
+6.
+![salary,level experience ](https://user-images.githubusercontent.com/116097143/236709448-fd2fc014-970f-45d2-82e0-c2d57f25edbd.png)
+
+7.
+![comp size salary](https://user-images.githubusercontent.com/116097143/236709449-13465219-8692-4ba9-8409-1e76e325831d.png)
+
+8.
+![job title highes salary](https://user-images.githubusercontent.com/116097143/236709451-00605f37-1987-4482-b06a-3d188373acfc.png)
