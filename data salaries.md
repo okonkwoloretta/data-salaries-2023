@@ -1,30 +1,69 @@
-# Analyzing Data Science Salaries for 2023 using SQL and PowerBI
+# <p align="center" style="margin-top: 0px; ">  Exploring Data Science Salaries in 2023 using SQL
 
-![data science](https://user-images.githubusercontent.com/116097143/236707409-3ba318d7-66f0-4aba-9304-ea9250599933.png)
+  ![data science](https://user-images.githubusercontent.com/116097143/236707409-3ba318d7-66f0-4aba-9304-ea9250599933.png)
 
 ## INTRODUCTION
-We are a team of data enthusiasts who wants to enhance our data skills by working on a project that involves cleaning, analyzing data using SQL, and visualizing the results using any tool of our choice...
+The purpose of this project is to analyze and explore the Data Science Salaries in 2023
+dataset available on [Kaggle](https://www.kaggle.com/datasets/saurabhshahane/data-science-jobs-salaries). 
+This dataset contains information about data science
+salaries from different regions, companies, positions, and other factors that affect
+salaries. The objective is to gain insights and identify trends from the data that can help
+companies and individuals make informed decisions.
 
-## What is Data Science
-Data Science is a multidisciplinary approach that combines principles and practices from the fields of mathematics, statistics, artificial intelligence, and computer engineering to analyze large amounts of data.
+## Objectives
+The objectives of this project are:
+  
+● Analyze the distribution of data science salaries in 2023
+  
+● Identify the factors that affect data science salaries such as job title, region, and company size
+  
+● Create visualizations to help understand the data better
+  
+● Identify the top-paying companies and job titles
+  
+● Explore the correlation between years of experience and salary
+  
+## Data Source
+The dataset contains data from 10,000 respondents and was collected through a survey. The data is available in a CSV file format and contains 11 columns.
 
-> Data Science process typically involves several stages, including:
+## Methodology
+The project will involve the following steps:
+  
+1. Data cleaning and preparation: 
+The dataset will be imported into a SQL database, cleaned and prepared for analysis. 
+This includes dealing with missing data, removing duplicates, and converting data types as needed.
+  
+### 1. CHECKING FOR MISSING VALUES IN EACH COLUMNS
 
-- Problem formulation: Defining the problem, identifying the business goals and objectives, and determining what questions need to be answered.
+Steps:
 
-- Data collection: Gathering relevant data from various sources, including structured and unstructured data, and cleaning and organizing it to ensure its quality and integrity.
+* Using **COALESCE** will return all rows where any of the specified columns contain a null value.
 
-- Data exploration and preparation: Exploring the data to identify patterns, relationships, and anomalies, and preparing the data for analysis.
+```sql
+SELECT *
+FROM ds_salaries
+WHERE COALESCE(work_year, experience_level, employment_type, job_title, salary, 
+               salary_currency, salary_in_usd, employee_residence, remote_ratio, company_location, company_size) IS NULL;        
+```
+### Output:
+*Kindly note that this is not the entire output. The entire output is long and would take up space.*
+		
+work_year |experience_level | employment_type | job_title |salary | salary_currency | salary_in_usd | employee_residence | remote_ratio 
+ | company_location | company_size |
+-- | -- | -- | -- | --| --| --| --| -- | -- |
+ 1 | 2 | 2 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 
 
-- Data analysis: Using statistical and machine learning techniques to identify patterns, correlations, and insights within the data.
 
-- Modeling and evaluation: Developing models that can be used to predict future outcomes or make informed decisions and evaluating their performance.
 
-- Communication and visualization: Communicating the results of the analysis to stakeholders and presenting the findings in an accessible and understandable way using visualization tools.
+There are 5 unique nodes (branches) on the Data Bank System.
+  
+ ---
+2. Exploratory data analysis: The dataset will be explored using SQL queries and
+basic statistical analysis. This will help identify patterns and trends in the data.
+3. Visualization: The results will be visualized using charts and graphs to help
+understand the data better.
 
-Overall, data science has become increasingly important in today's data-driven world, with applications across a wide range of fields including healthcare, finance, marketing, and many others.
-
-we will be exploring and finding insights from our dataset called **data science salaries 2023**, the data set can be found [here](https://www.kaggle.com/datasets/saurabhshahane/data-science-jobs-salaries)
+  we will be exploring and finding insights from our dataset called **data science salaries 2023**, the data set can be found [here]
 
 ## Data Cleaning and Preprocessing 
 
