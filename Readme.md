@@ -27,5 +27,4 @@ The objectives of this project are:
 ## Data Source
 The dataset contains data from 10,000 respondents and was collected through a survey. The data is available in a CSV file format and contains 11 columns.
   
-
 ## VIEW MY EXPLORATORY ANALYSIS [HERE](https://github.com/okonkwoloretta/data-salaries-2023/blob/main/data%20salaries.md)
