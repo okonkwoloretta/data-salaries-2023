@@ -108,12 +108,23 @@ WITH CTE AS (
 DELETE FROM CTE
 WHERE rn > 1;
 ```
-### Output:
-*Kindly note that this is not the entire output. This is just the first 10.*
+### Output: 
+Successful
+*Kindly note that if you rerun this code below*
+```sql
+SELECT *
+FROM (
+    SELECT *, ROW_NUMBER() OVER (PARTITION BY work_year, experience_level, employment_type, job_title, salary, 
+           salary_currency, salary_in_usd, employee_residence, remote_ratio, 
+	       company_location, company_size ORDER BY (SELECT NULL)) AS rn
+    FROM [DS SALARIES].[dbo].[data_science_salaries ]
+) t
+WHERE rn > 1       
+```
+*you will an empty dataset, indicating no dulipate values available*
 		
 | **work_year** | **experience_level** | **employment_type** | **job_title** | **salary** | **salary_currency** | **salary_in_usd** | **employee_residence** | **remote_ratio** | **company_location** | **company_size** | **rn**
- |  ---  | --- | --- | --- | --- | ---| --- | --- | --- | --- | --- | ---
-	.
+ |  ---  | --- | --- | --- | --- | ---| --- | --- | --- | --- | --- | ---	.
 ---	
 2. Exploratory data analysis: The dataset will be explored using SQL queries and
 basic statistical analysis. This will help identify patterns and trends in the data.
