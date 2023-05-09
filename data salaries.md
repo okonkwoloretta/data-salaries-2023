@@ -294,12 +294,182 @@ ORDER BY salary_in_usd
 	
 | **salary_in_usd** |  **count** |
 |  ---  |---  |
-|450000| 5132	
+|5132	|1
+|5409	|2
+|5679	|1
+|5707	|1
+|5723	|1
+|5882	|1
+|6072	|2
+|6270	|1
+|6304	|1
+|6359	|1		
+---
+### e. Which region pays the highest salaries?
 	
+Steps:
+
+* Thi query retrieves the average salary in USD for each employee residence
+	
+```sql	
+SELECT employee_residence, AVG(salary_in_usd) AS avg_salary
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
+GROUP BY employee_residence
+ORDER BY avg_salary DESC
+```
+### Output:
+	
+| **employee_residence** |  **avg_salary** |
+|  ---  |---  |
+|IL	|423834
+|MY	|200000
+|PR	|166000
+|US	|153972
+|CA	|130859
+|CN	|125404
+|NZ	|125000
+|BA	|120000
+|IE	|114943
+|DO	|110000		
+---	
+ 
+### f. Which region has the most data science jobs?
+	
+Steps:
+
+* This query is counting the number of data science jobs for each region based on the "employee_residence" 
+	
+```sql	
+SELECT employee_residence AS region, COUNT(*) AS job_count
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
+WHERE job_title = 'Data Scientist'
+GROUP BY employee_residence
+ORDER BY job_count DESC
+```
+### Output:
+	
+| **region** |  **job_count** |
+|  ---  |---  |
+|US	|389
+|GB	|28
+|CA	||20
+|IN	|19
+|FR	|14
+||ES	|11
+|DE	|11
+|BR	|5
+|IE	|4
+|NL	|4		
+---	
+### g. What are the top-paying companies for data science roles?
+	
+Steps:
+
+* This query calculates the average salary for data scientists grouped by company location,
+	
+```sql	
+SELECT company_location, AVG(salary_in_usd) AS avg_salary
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
+WHERE job_title = 'Data Scientist'
+GROUP BY company_location
+ORDER BY avg_salary DESC
+```
+### Output:
+	
+| **company_location** |  **avg_salary** |
+|  ---  |---  |
+|US	|154986
+|CA	|131604
+|CH	|120747
+|IL	|119059
+|IE	|115514
+|DZ	|100000
+|GB	|88491
+|NL	|83264
+|AU	|83171
+|AT	|76352		
+---	
+### h. What is the average salary for data scientists with different levels of experience?
+	
+Steps:
+
+* This query will display the count of each unique salary in the specified columnn of our dataset
+	
+```sql	
+SELECT salary_in_usd, COUNT(*) AS count
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
+WHERE salary_in_usd IS NOT NULL
+GROUP BY salary_in_usd
+ORDER BY salary_in_usd
+```
+### Output:
+	
+| **salary_in_usd** |  **count** |
+|  ---  |---  |
+|5132	|1
+|5409	|2
+|5679	|1
+|5707	|1
+|5723	|1
+|5882	|1
+|6072	|2
+|6270	|1
+|6304	|1
+|6359	|1		
+---	
+### i. Which job titles have the highest salaries?
+	
+Steps:
+
+* This query will display the count of each unique salary in the specified columnn of our dataset
+	
+```sql	
+SELECT salary_in_usd, COUNT(*) AS count
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
+WHERE salary_in_usd IS NOT NULL
+GROUP BY salary_in_usd
+ORDER BY salary_in_usd
+```
+### Output:
+	
+| **salary_in_usd** |  **count** |
+|  ---  |---  |
+|5132	|1
+|5409	|2
+|5679	|1
+|5707	|1
+|5723	|1
+|5882	|1
+|6072	|2
+|6270	|1
+|6304	|1
+|6359	|1		
+---	
+### j. How does company size affect salaries for data science roles?
+	
+Steps:
+
+* This query will display the count of each unique salary in the specified columnn of our dataset
+	
+```sql	
+SELECT salary_in_usd, COUNT(*) AS count
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
+WHERE salary_in_usd IS NOT NULL
+GROUP BY salary_in_usd
+ORDER BY salary_in_usd
+```
+### Output:
+	
+| **salary_in_usd** |  **count** |
+|  ---  |---  |
+|5132	|1
+|5409	|2
+|5679	|1
+|5707	|1
+|5723	|1
+|5882	|1
+|6072	|2
+|6270	|1
+|6304	|1
+|6359	|1		
 ---		
-5. Which region pays the highest salaries?
-6. Which region has the most data science jobs?
-7. What are the top-paying companies for data science roles?
-8. What is the average salary for data scientists with different levels of experience?
-9. Which job titles have the highest salaries?
-10.How does company size affect salaries for data science roles?	
