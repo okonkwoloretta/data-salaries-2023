@@ -214,3 +214,18 @@ salary	| int  | NULL |
  company_location |varchar  | 50 |
  company_size | varchar  | 50 |	
 	
+2. Exploratory data analysis: 
+The dataset will be explored using SQL queries and basic statistical analysis. 
+This will help identify patterns and trends in the data while answering business questions.
+
+### a. What is the average data science salary in 2023?
+
+2. What is the median data science salary in 2023?
+3. What is the highest and lowest salary in the dataset?
+4. What is the distribution of salaries in the dataset?
+5. Which region pays the highest salaries?
+6. Which region has the most data science jobs?
+7. What are the top-paying companies for data science roles?
+8. What is the average salary for data scientists with different levels of experience?
+9. Which job titles have the highest salaries?
+10.How does company size affect salaries for data science roles?	
