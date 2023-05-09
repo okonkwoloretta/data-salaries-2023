@@ -303,7 +303,8 @@ ORDER BY salary_in_usd
 |6072	|2
 |6270	|1
 |6304	|1
-|6359	|1		
+|6359	|1
+	
 ---
 ### e. Which region pays the highest salaries?
 	
@@ -330,7 +331,8 @@ ORDER BY avg_salary DESC
 |NZ	|125000
 |BA	|120000
 |IE	|114943
-|DO	|110000		
+|DO	|110000	
+	
 ---	
  
 ### f. Which region has the most data science jobs?
@@ -349,7 +351,7 @@ ORDER BY job_count DESC
 ### Output:
 	
 | **region** |  **job_count** |
-|  ---  |---  |
+| ---  | ---  |
 |US	|389
 |GB	|28
 |CA	||20
@@ -359,7 +361,8 @@ ORDER BY job_count DESC
 |DE	|11
 |BR	|5
 |IE	|4
-|NL	|4		
+|NL	|4	
+	
 ---	
 ### g. What are the top-paying companies for data science roles?
 	
@@ -387,7 +390,8 @@ ORDER BY avg_salary DESC
 |GB	|88491
 |NL	|83264
 |AU	|83171
-|AT	|76352		
+|AT	|76352	
+	
 ---	
 ### h. What is the average salary for data scientists with different levels of experience?
 	
