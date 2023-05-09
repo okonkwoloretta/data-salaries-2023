@@ -354,10 +354,10 @@ ORDER BY job_count DESC
 | ---  | ---  |
 |US	|389
 |GB	|28
-|CA	||20
+|CA	|20
 |IN	|19
 |FR	|14
-||ES	|11
+|ES	|11
 |DE	|11
 |BR	|5
 |IE	|4
@@ -469,4 +469,9 @@ ORDER BY avg_salary DESC
 * Employees with higher experience levels (EX) earn higher salaries than those with lower experience levels (SE, MI, EN). This is an expected trend since more experienced employees usually have a greater skill set and can handle more complex tasks, resulting in higher compensation.
 * The highest paying job title in 2023 for data science is Director of Data Science with an average salary of 242,728 USD. The second and third highest paying job titles are AI Scientist and Head of Data, respectively, with average salaries of 231,232 USD and 224,738 USD. It is interesting to note that all of the top five highest paying job titles in data science have an average salary above 200,000 USD, indicating the potential for high earning in this field for those in leadership or specialized roles.
 	
-* We can see that Medium companies tend to offer higher salaries to data scientists in 2023, with an average salary of $158,273. This is significantly higher than the average salaries offered by small and large-sized companies, which are $61,444 and $64,657, respectively. This insight may suggest that data scientists who are looking for higher salaries should focus their job search on medium companies. However, it's important to keep in mind that there may be other factors to consider when job searching, such as company culture, benefits, and growth opportunities.	
+* We can see that Medium companies tend to offer higher salaries to data scientists in 2023, with an average salary of $158,273. This is significantly higher than the average salaries offered by small and large-sized companies, which are $61,444 and $64,657, respectively. This insight may suggest that data scientists who are looking for higher salaries should focus their job search on medium companies. However, it's important to keep in mind that there may be other factors to consider when job searching, such as company culture, benefits, and growth opportunities.
+	
+### 3. Visualization: 
+Visualizing the dataset in PowerBI using charts to help understand the data better.
+	
+	
