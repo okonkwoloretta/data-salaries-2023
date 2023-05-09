@@ -124,11 +124,10 @@ FROM (
 ) t
 WHERE rn > 1       
 ```
-*you will an empty dataset, indicating no dulipate values available*
+*showing an empty dataset, indicating no dulipate values available*
 		
 | **work_year** | **experience_level** | **employment_type** | **job_title** | **salary** | **salary_currency** | **salary_in_usd** | **employee_residence** | **remote_ratio** | **company_location** | **company_size** | **rn**
- |  ---  | --- | --- | --- | --- | ---| --- | --- | --- | --- | --- | ---	
-	.
+ |  ---  | --- | --- | --- | --- | ---| --- | --- | --- | --- | --- | ---		.
 ---	
 2. Exploratory data analysis: The dataset will be explored using SQL queries and
 basic statistical analysis. This will help identify patterns and trends in the data.
