@@ -129,6 +129,52 @@ WHERE rn > 1
 | **work_year** | **experience_level** | **employment_type** | **job_title** | **salary** | **salary_currency** | **salary_in_usd** | **employee_residence** | **remote_ratio** | **company_location** | **company_size** | **rn**
  |  ---  | --- | --- | --- | --- | ---| --- | --- | --- | --- | --- | ---
 ---	
+### 3. CHECKING THE DATA TYPE IN MY DATASET AND UPDATING DATA TYPE COLUMNS IF NECESSARY
+
+Steps:
+
+* The **INFORMATION_SCHEMA.COLUMNS** is a system view in SQL Server that provides metadata about the columns in a database. Using this view, you can retrieve information such as column names, data types, and maximum lengths for any table in the database. By filtering on the **TABLE_NAME** column. Here I included **USE** statement to specify which database I want to query, Without it, SQL Server will assume I am trying to query the default database (usually "master") and  may not get the expected results.
+
+```sql
+USE [DS SALARIES]
+SELECT 
+    COLUMN_NAME,
+    DATA_TYPE,
+    CHARACTER_MAXIMUM_LENGTH
+FROM
+    INFORMATION_SCHEMA.COLUMNS
+WHERE 
+    TABLE_NAME = 'data_science_salaries'
+```
+### Output:
+
+| **COLUMN_NAME** | **DATA_TYPE** | **CHARACTER_MAXIMUM_LENGTH** 
+ |  ---  | --- | --- | 
+ work_year |varchar  | 50 | 
+ experience_level |varchar  | 50 |
+ employment_type | varchar  | 50 |
+ job_title |varchar  | 50 |
+salary	| varchar  | 50 |
+ salary_currency |varchar  | 50 |
+ salary_in_usd | varchar  | 50 |	
+ employee_residence | varchar  | 50 |	
+ remote_ratio | varchar  | 50 |
+ company_location |varchar  | 50 |
+ company_size | varchar  | 50 |
+```sql	
+	
+ALTER TABLE data_science_salaries
+ALTER COLUMN work_year INT
+--
+ALTER TABLE data_science_salaries
+ALTER COLUMN salary INT
+--
+ALTER TABLE data_science_salaries
+ALTER COLUMN salary_in_usd INT
+--
+ALTER TABLE data_science_salaries
+ALTER COLUMN remote_ratio INT
+```	
 2. Exploratory data analysis: The dataset will be explored using SQL queries and
 basic statistical analysis. This will help identify patterns and trends in the data.
 3. Visualization: The results will be visualized using charts and graphs to help
