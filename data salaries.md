@@ -33,7 +33,7 @@ The project will involve the following steps:
 The dataset will be imported into a SQL database, cleaned and prepared for analysis. 
 This includes dealing with missing data, removing duplicates, and converting data types as needed.
   
-### 1. CHECKING FOR MISSING VALUES IN EACH COLUMNS
+### a. CHECKING FOR MISSING VALUES IN EACH COLUMNS
 
 Steps:
 
@@ -55,7 +55,7 @@ WHERE COALESCE(work_year, experience_level, employment_type, job_title, salary,
 There are no missing values in our data.
   
  ---
-### 2. CHECKING FOR DUPLICATE VALUES AND REMOVING THEM
+### b. CHECKING FOR DUPLICATE VALUES AND REMOVING THEM
 
 Steps:
 
@@ -125,12 +125,12 @@ FROM (
 ) t
 WHERE rn > 1       
 ```
-*showing an empty dataset, indicating no dulipate values available*
+*the result will show an empty dataset, indicating no duplicate values available*
 		
 | **work_year** | **experience_level** | **employment_type** | **job_title** | **salary** | **salary_currency** | **salary_in_usd** | **employee_residence** | **remote_ratio** | **company_location** | **company_size** | **rn**
  |  ---  | --- | --- | --- | --- | ---| --- | --- | --- | --- | --- | ---
 ---	
-### 3. CHECKING THE DATA TYPE IN MY DATASET AND UPDATING DATA TYPE COLUMNS IF NECESSARY
+### c. CHECKING THE DATA TYPE IN MY DATASET AND UPDATING DATA TYPE COLUMNS IF NECESSARY
 
 Steps:
 
