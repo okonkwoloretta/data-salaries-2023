@@ -214,6 +214,7 @@ salary	| int  | NULL |
  company_location |varchar  | 50 |
  company_size | varchar  | 50 |	
 	
+---	
 2. Exploratory data analysis: 
 The dataset will be explored using SQL queries and basic statistical analysis. 
 This will help identify patterns and trends in the data while answering business questions.
