@@ -29,7 +29,7 @@ The dataset contains data from 10,000 respondents and was collected through a su
 ## Methodology
 The project will involve the following steps:
   
-1. Data cleaning and preparation: 
+### 1. Data cleaning and preparation: 
 The dataset will be imported into a SQL database, cleaned and prepared for analysis. 
 This includes dealing with missing data, removing duplicates, and converting data types as needed.
   
@@ -215,15 +215,88 @@ salary	| int  | NULL |
  company_size | varchar  | 50 |	
 	
 ---	
-2. Exploratory data analysis: 
+### 2. Exploratory data analysis: 
 The dataset will be explored using SQL queries and basic statistical analysis. 
 This will help identify patterns and trends in the data while answering business questions.
 
 ### a. What is the average data science salary in 2023?
 
-2. What is the median data science salary in 2023?
-3. What is the highest and lowest salary in the dataset?
-4. What is the distribution of salaries in the dataset?
+Steps:
+
+* The **AVG** calculates the average value of the specified column.
+	
+```sql
+SELECT AVG(salary_in_usd) AS avg_salary
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
+WHERE work_year = '2023' AND job_title = 'Data Scientist'	
+```	
+### Output:
+
+| **avg_salary** |  
+|  ---  |
+| 151947|
+	
+---	
+
+### b.	What is the median data science salary in 2023?
+	
+Steps:
+
+* The **PERCENTILE_CONT** with a parameter of 0.5 calculates the median by sorting the values in the specified column and returning the value at the midpoint. The **WITHIN GROUP** specifies the ordering and the **OVER** defines the entire result set for which the median is calculated.
+	
+```sql	
+SELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY salary_in_usd) OVER() AS median_salary
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
+WHERE work_year = '2023' AND job_title = 'Data Scientist'
+```
+### Output:
+
+| **median_salary** |  
+|  ---  |
+| 150000|
+| 150000|
+| 150000|
+| 150000|
+| 150000|	
+	
+---			
+### c. What is the highest and lowest salary in the dataset?
+
+Steps:
+
+* This query will give us the maximum and minimum value in our dataset
+	
+```sql	
+SELECT MAX(salary_in_usd) AS max_salary, MIN(salary_in_usd) AS min_salary
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
+```
+### Output:
+	
+| **max_salary** |  **min_salary** |
+|  ---  |---  |
+|450000| 5132	
+	
+---	
+### d. What is the distribution of salaries in the dataset?
+	
+Steps:
+
+* This query will display the count of each unique salary in the specified columnn of our dataset
+	
+```sql	
+SELECT salary_in_usd, COUNT(*) AS count
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
+WHERE salary_in_usd IS NOT NULL
+GROUP BY salary_in_usd
+ORDER BY salary_in_usd
+```
+### Output:
+	
+| **salary_in_usd** |  **count** |
+|  ---  |---  |
+|450000| 5132	
+	
+---		
 5. Which region pays the highest salaries?
 6. Which region has the most data science jobs?
 7. What are the top-paying companies for data science roles?
