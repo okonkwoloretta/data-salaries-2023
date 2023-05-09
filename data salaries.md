@@ -88,8 +88,8 @@ WHERE rn > 1
  2022 | EN  | FT  | Data Engineer | 160000  | USD | 135000 | US  |  0   |  US   |  M   | 2	
 	
 There are so many duplicate values in our output, so we have to delete them
-* Using **DELETE** to removes any rows where the rn value is greater than 1, effectively deleting all duplicate rows	
-> NOTE Deleting data from a table can have unintended consequences, and it's generally a good practice to make a backup of the table before performing the delete operation. Additionally, it's a good idea to test the query on a smaller dataset or a copy of the original table before running it on the entire dataset to ensure that it works as expected.
+* Using **DELETE** to removes any rows where the **rn** value is greater than 1, will effectively delete all duplicate rows	
+> **** Deleting data from a table can have unintended consequences, and it's generally a good practice to make a backup of the table before performing the delete operation. Additionally, it's a good idea to test the query on a smaller dataset or a copy of the original table before running it on the entire dataset to ensure that it works as expected.
 	
 ```sql
 WITH CTE AS (
@@ -107,8 +107,14 @@ WITH CTE AS (
 
 DELETE FROM CTE
 WHERE rn > 1;
-```	.
- ---	
+```
+### Output:
+*Kindly note that this is not the entire output. This is just the first 10.*
+		
+| **work_year** | **experience_level** | **employment_type** | **job_title** | **salary** | **salary_currency** | **salary_in_usd** | **employee_residence** | **remote_ratio** | **company_location** | **company_size** | **rn**
+ |  ---  | --- | --- | --- | --- | ---| --- | --- | --- | --- | --- | ---
+	.
+---	
 2. Exploratory data analysis: The dataset will be explored using SQL queries and
 basic statistical analysis. This will help identify patterns and trends in the data.
 3. Visualization: The results will be visualized using charts and graphs to help
