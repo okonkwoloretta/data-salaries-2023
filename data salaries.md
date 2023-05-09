@@ -41,23 +41,74 @@ Steps:
 
 ```sql
 SELECT *
-FROM ds_salaries
+FROM [DS SALARIES].[dbo].[data_science_salaries ]
 WHERE COALESCE(work_year, experience_level, employment_type, job_title, salary, 
                salary_currency, salary_in_usd, employee_residence, remote_ratio, company_location, company_size) IS NULL;        
 ```
 ### Output:
-*Kindly note that this is not the entire output. The entire output is long and would take up space.*
 		
-work_year |experience_level | employment_type | job_title |salary | salary_currency | salary_in_usd | employee_residence | remote_ratio 
- | company_location | company_size |
--- | -- | -- | -- | --| --| --| --| -- | -- |
- 1 | 2 | 2 | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 
+**work_year** | **experience_level** | **employment_type** | **job_title** | **salary** | **salary_currency**** | **salary_in_usd** | **employee_residence** | **remote_ratio** | **company_location** | **company_size** |
+--- | --- | --- | --- | --- | ---| --- | --- | --- | --- | ---
 
 
 
-There are 5 unique nodes (branches) on the Data Bank System.
+There are no missing values in our data.
   
  ---
+### 2. CHECKING FOR DUPLICATE VALUES AND REMOVING THEM
+
+Steps:
+
+* Using **ROW_NUMBER** will assign a unique row number to each row within the specified columns listed,and the **rn** column is added to the result set to show the row number for each row. If there are duplicate rows in the table, the rn column will have a value greater than 1 for those rows. You can then use a WHERE clause to filter the results to only show the duplicate rows.
+
+```sql
+SELECT *
+FROM (
+    SELECT *, ROW_NUMBER() OVER (PARTITION BY work_year, experience_level, employment_type, job_title, salary, 
+           salary_currency, salary_in_usd, employee_residence, remote_ratio, 
+	       company_location, company_size ORDER BY (SELECT NULL)) AS rn
+    FROM [DS SALARIES].[dbo].[data_science_salaries ]
+) t
+WHERE rn > 1       
+```
+### Output:
+*Kindly note that this is not the entire output. This is just the first 10.*
+		
+| **work_year** | **experience_level** | **employment_type** | **job_title** | **salary** | **salary_currency** | **salary_in_usd** | **employee_residence** | **remote_ratio** | **company_location** | **company_size** | **rn**
+ |  ---  | --- | --- | --- | --- | ---| --- | --- | --- | --- | --- | ---
+ 2020 | EN  | FT  | Data Engineer | 1000000 | INR | 13493  | IN  |  100 |  IN   |  L   | 2
+ 2021 | MI  | FT  | Data Engineer | 200000  | USD | 200000 | US  |  100 |  US   |  L   | 2
+ 2021 | MI  | FT  | Data Scientist| 76760   | EUR | 90734  | DE  |  50  |  DE   |  L   | 2
+ 2022 | EN  | FT  | Data Analyst  | 50000   | USD | 50000  | US  |  50  |  US   |  L   | 2	
+ 2022 | EN  | FT  | Data Engineer | 135000  | USD | 135000 | US  |  0   |  US   |  M   | 2
+ 2022 | EN  | FT  | Data Engineer | 135000  | USD | 135000 | US  |  0   |  US   |  M   | 3	
+ 2022 | EN  | FT  | Data Engineer | 135000  | USD | 135000 | US  |  0   |  US   |  M   | 4	
+ 2022 | EN  | FT  | Data Engineer | 135000  | USD | 135000 | US  |  0   |  US   |  M   | 5	
+ 2022 | EN  | FT  | Data Engineer | 135000  | USD | 135000 | US  |  0   |  US   |  M   | 6
+ 2022 | EN  | FT  | Data Engineer | 160000  | USD | 135000 | US  |  0   |  US   |  M   | 2	
+	
+There are so many duplicate values in our output, so we have to delete them
+* Using **DELETE** to removes any rows where the rn value is greater than 1, effectively deleting all duplicate rows	
+> NOTE Deleting data from a table can have unintended consequences, and it's generally a good practice to make a backup of the table before performing the delete operation. Additionally, it's a good idea to test the query on a smaller dataset or a copy of the original table before running it on the entire dataset to ensure that it works as expected.
+	
+```sql
+WITH CTE AS (
+  SELECT work_year, experience_level, employment_type, job_title, salary, 
+         salary_currency, salary_in_usd, employee_residence, remote_ratio, 
+         company_location, company_size,
+         ROW_NUMBER() OVER (
+           PARTITION BY work_year, experience_level, employment_type, job_title, salary, 
+                        salary_currency, salary_in_usd, employee_residence, remote_ratio, 
+	                    company_location, company_size
+           ORDER BY (SELECT 0)
+         ) AS rn
+  FROM [DS SALARIES].[dbo].[data_science_salaries ]
+)
+
+DELETE FROM CTE
+WHERE rn > 1;
+```	.
+ ---	
 2. Exploratory data analysis: The dataset will be explored using SQL queries and
 basic statistical analysis. This will help identify patterns and trends in the data.
 3. Visualization: The results will be visualized using charts and graphs to help
