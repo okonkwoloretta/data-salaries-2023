@@ -397,83 +397,76 @@ ORDER BY avg_salary DESC
 	
 Steps:
 
-* This query will display the count of each unique salary in the specified columnn of our dataset
+* This will show the average salary for each experience level
 	
 ```sql	
-SELECT salary_in_usd, COUNT(*) AS count
+SELECT experience_level, AVG(salary_in_usd) AS avg_salary
 FROM [DS SALARIES].[dbo].[data_science_salaries ]
-WHERE salary_in_usd IS NOT NULL
-GROUP BY salary_in_usd
-ORDER BY salary_in_usd
+WHERE job_title = 'Data Scientist'
+GROUP BY experience_level
+ORDER BY avg_salary DESC
 ```
 ### Output:
 	
-| **salary_in_usd** |  **count** |
+| **experience_level** |  **avg_salary** |
 |  ---  |---  |
-|5132	|1
-|5409	|2
-|5679	|1
-|5707	|1
-|5723	|1
-|5882	|1
-|6072	|2
-|6270	|1
-|6304	|1
-|6359	|1		
+|EX	|184718
+|SE	|160717
+|MI	|91896
+|EN	|71773		
 ---	
 ### i. Which job titles have the highest salaries?
 	
 Steps:
 
-* This query will display the count of each unique salary in the specified columnn of our dataset
+* This query will return the average salary for each job title in the year 2023
 	
 ```sql	
-SELECT salary_in_usd, COUNT(*) AS count
+SELECT job_title, AVG(salary_in_usd) AS avg_salary
 FROM [DS SALARIES].[dbo].[data_science_salaries ]
-WHERE salary_in_usd IS NOT NULL
-GROUP BY salary_in_usd
-ORDER BY salary_in_usd
+WHERE work_year = '2023'
+GROUP BY job_title
+ORDER BY avg_salary DESC
 ```
 ### Output:
 	
-| **salary_in_usd** |  **count** |
+| **job_title** |  **avg_salary** |
 |  ---  |---  |
-|5132	|1
-|5409	|2
-|5679	|1
-|5707	|1
-|5723	|1
-|5882	|1
-|6072	|2
-|6270	|1
-|6304	|1
-|6359	|1		
+|Director of Data Science	|242728
+|AI Scientist	                |231232
+|Head of Data	                |224738
+|Computer Vision Engineer	|224240
+|Data Lead	                |212500
+|NLP Engineer	                |205000
+|Applied Scientist	        |194951
+|Machine Learning Scientist	|194468
+|Data Science Manager	        |178787
+|Machine Learning Software Engineer |178000	
 ---	
 ### j. How does company size affect salaries for data science roles?
 	
 Steps:
 
-* This query will display the count of each unique salary in the specified columnn of our dataset
+* This query will return the average salary of Data Scientists in 2023 grouped by company size
 	
 ```sql	
-SELECT salary_in_usd, COUNT(*) AS count
+SELECT company_size, AVG(salary_in_usd) AS avg_salary
 FROM [DS SALARIES].[dbo].[data_science_salaries ]
-WHERE salary_in_usd IS NOT NULL
-GROUP BY salary_in_usd
-ORDER BY salary_in_usd
+WHERE job_title = 'Data Scientist' AND work_year = '2023'
+GROUP BY company_size
+ORDER BY avg_salary DESC
 ```
 ### Output:
 	
-| **salary_in_usd** |  **count** |
+| **company_size** |  **avg_salary** |
 |  ---  |---  |
-|5132	|1
-|5409	|2
-|5679	|1
-|5707	|1
-|5723	|1
-|5882	|1
-|6072	|2
-|6270	|1
-|6304	|1
-|6359	|1		
+|M	|158273
+|L	|64657
+|S	|61444		
 ---		
+### INSIGHTS:
+	
+* Employees with higher experience levels (EX) earn higher salaries than those with lower experience levels (SE, MI, EN). This is an expected trend since more experienced employees usually have a greater skill set and can handle more complex tasks, resulting in higher compensation.
+* The highest paying job title in 2023 for data science is Director of Data Science with an average salary of 242,728 USD. The second and third highest paying job titles are AI Scientist and Head of Data, respectively, with average salaries of 231,232 USD and 224,738 USD. It is interesting to note that all of the top five highest paying job titles in data science have an average salary above 200,000 USD, indicating the potential for high earning in this field for those in leadership or specialized roles.
+	
+* We can see that Medium companies tend to offer higher salaries to data scientists in 2023, with an average salary of $158,273. This is significantly higher than the average salaries offered by small and large-sized companies, which are $61,444 and $64,657, respectively. This insight may suggest that data scientists who are looking for higher salaries should focus their job search on medium companies. However, it's important to keep in mind that there may be other factors to consider when job searching, such as company culture, benefits, and growth opportunities.	
